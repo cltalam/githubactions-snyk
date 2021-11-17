@@ -14,4 +14,4 @@ jobs:
       continue-on-error: true
       run: snyk test --all-projects
     - name: Snyk monitor
-   #  run: snyk monitor --all-projects  
+      run: snyk monitor --all-projects  
