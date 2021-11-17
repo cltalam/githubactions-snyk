@@ -3,15 +3,15 @@ on: push
 jobs:
   security:
     runs-on: ubuntu-latest
+    env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
         continue-on-error: true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Snyk test
         continue-on-error: true
         run: snyk test --all-projects
       - name: Snyk monitor
-        run: snyk monitor --all-projects
+        run: snyk monitor
